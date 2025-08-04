@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "../../theme.css";
+
+@layer components {
+    .navbar {
+        @apply flex gap-3 md:gap-0 fixed z-10 top-0 w-full bg-linear-to-b from-electric-blue to-white px-2 md:flex-col md:static border-b-[1px] border-sun shadow-sun;
+
+        & .nav-left {
+            @apply w-[50%] md:w-full md:flex md:justify-center;
+
+            & img {
+                @apply w-[175px] md:w-[250px] cursor-pointer;
+            }
+        }
+
+        & .nav-right {
+            @apply w-[50%] flex justify-end md:justify-center items-center md:w-full md:py-1;
+
+            & ul {
+                @apply md:flex list-none gap-3 hidden text-[14px];
+
+                & li {
+                    @apply cursor-pointer;
+                }
+            }
+
+            & .hamburger {
+                @apply md:hidden text-sm;
+
+                & .open-hamburger {
+                    @apply absolute top-0 left-0 w-screen h-screen pl-[6%] pt-[17px] bg-electric-blue z-20;
+
+                    & .hamburger-react {
+                        @apply -right-[calc(100%_-_56px)];
+                    }
+
+                    & ul {
+                        @apply list-none grid grid-cols-1 pt-5;
+
+                        & li {
+                            @apply border-b-1 w-[70%] py-2 cursor-pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

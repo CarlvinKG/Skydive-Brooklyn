@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+@import "./theme.css";
+
+/* @theme {
+    --color-electric-blue: #85F9FF;
+    --color-neon-blue: #666AFD;
+    --color-palatinate-blue: #264AE6;
+    --color-pakistan-green: #223B05;
+    --color-sun: #F8F272;
+    --shadow-sun: 0 4px 6px -1px rgb(248 242 114 / 0.3), 0 2px 4px -2px rgb(248 242 114 / 0.3);
+
+    --breakpoint-sm: 500px;
+    --breakpoint-md: 800px;
+    --breakpoint-lg: 1100px;
+    --breakpoint-xl: 1400px;
+} */
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    *::after, *::before {
+        box-sizing: border-box;
+    }
+
+    body {
+        @apply text-palatinate-blue bg-electric-blue bg-cloud-pattern;
+        font-family: "poppins", serif;
+        font-optical-sizing: auto;
+    }
+
+    h1 {
+        @apply !text-[min(5.5vw,30px)] !font-bold text-center pb-2;
+        animation: appear 1s linear;
+    }
+
+    h2 {
+        @apply !text-[22px] !font-semibold text-center;
+    }
+
+    h3 {
+        @apply !text-[18px] !font-semibold text-center;
+    }
+
+    p {
+        @apply text-pakistan-green my-2;
+    }
+}
+
+@layer components {
+    /* Common components */
+    .content-container {
+        @apply w-full min-h-[48.4vh] mt-[74px] md:mt-0 mb-4 py-4;
+
+        & .content {
+            @apply flex flex-col px-2 md:w-[80%] mx-auto;
+
+            & .article {
+                @apply bg-white shadow-md/30 p-3 rounded-lg my-2;
+
+                & h3 {
+                    @apply font-semibold;
+                }
+
+                & ul {
+                    @apply m-[5px_0px_5px_40px] list-disc text-pakistan-green;
+                }
+            }
+
+            & .sbs {
+                @apply flex flex-col md:gap-4 md:grid md:grid-cols-2;
+
+                & .img-wrapper {
+                    @apply rounded-lg shadow-md/30 my-2 overflow-hidden;
+
+                    & img {
+                        @apply w-full h-full object-cover;
+                    }
+
+                    & iframe {
+                        @apply w-full h-full border-0;
+                    }
+
+                    & .no-click {
+                        @apply flex justify-center items-end absolute top-0 left-0 w-full h-full;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}

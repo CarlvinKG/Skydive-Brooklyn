@@ -1,0 +1,15 @@
+@theme {
+    --color-electric-blue: #85F9FF;
+    --color-neon-blue: #666AFD;
+    --color-palatinate-blue: #264AE6;
+    --color-pakistan-green: #223B05;
+    --color-sun: #F8F272;
+    --shadow-sun: 0 4px 6px -1px rgb(248 242 114 / 0.3), 0 2px 4px -2px rgb(248 242 114 / 0.3);
+
+    --breakpoint-sm: 500px;
+    --breakpoint-md: 800px;
+    --breakpoint-lg: 1100px;
+    --breakpoint-xl: 1400px;
+
+    --background-image-cloud-pattern: url("/clouds.png");
+}
