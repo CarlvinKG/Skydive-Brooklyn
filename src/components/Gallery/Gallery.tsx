@@ -27,7 +27,7 @@ const GalleryComp = () => {
                 plugins={[lgThumbnail, lgZoom]}
             >
                 {imageList.map((image, index) => (
-                    <a href={image.default}>
+                    <a href={image.default} key={index}>
                         <img src={image.default} alt={`Gallery image ${index + 1}`}  />
                     </a>
                 ))}
