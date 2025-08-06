@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from 'react'
+import React, { createContext, useState, type ReactNode } from 'react'
 import { GiAirplaneDeparture, GiClothes } from 'react-icons/gi'
 import { BsBackpack3 } from 'react-icons/bs'
 
@@ -19,10 +19,22 @@ type PriceContextType = {
         walkIn: number
     }[];
     experiencedPrices: {
-        icon: JSX.Element
+        icon: React.JSX.Element
         label: string,
         price: number
     }[];
+};
+
+type TandemPrice = {
+    label: string;
+    online: number;
+    walkIn: number;
+};
+
+type ExperiencedPrice = {
+    icon: React.JSX.Element;
+    label: string;
+    price: number;
 };
 
 export const PriceContext = createContext<PriceContextType | null>(null);
@@ -42,7 +54,7 @@ export const PriceProvider = ({ children }: LayoutProps) => {
     const tandemDiscounted = Math.round(tandemPrice * discountRate * 100) / 100;
     const tandemTotal = Math.round(tandemDiscounted * groupSize * 100) / 100;
 
-    const tandemPrices = [
+    const tandemPrices: TandemPrice[] = [
         {
             label: '1 - 4',
             online: tandemDiscounted,
@@ -58,7 +70,7 @@ export const PriceProvider = ({ children }: LayoutProps) => {
         }
     ]
 
-    const experiencedPrices = [
+    const experiencedPrices: ExperiencedPrice[] = [
         {
             icon: <GiAirplaneDeparture size={20} />,
             label: "13,500' Lift ticket",
@@ -93,5 +105,3 @@ export const PriceProvider = ({ children }: LayoutProps) => {
         </PriceContext.Provider>
     );
 };
-
-export default PriceContext;

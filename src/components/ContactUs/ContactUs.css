@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "../../theme.css";
+
+@layer components {
+    .message-form {
+        @apply bg-white shadow-md/30 p-3 rounded-lg my-2;
+
+        & p {
+            @apply px-4;
+        }
+
+        & .send-message {
+            @apply w-full p-4;
+
+            & .field {
+                @apply flex flex-col w-full mb-2;
+
+                & label {
+                    @apply flex text-pakistan-green font-semibold items-center;
+
+                    & span {
+                        @apply pl-2;
+                    }
+                }
+
+                & input, textarea {
+                    @apply w-full py-1 px-2 border-[1px] border-gray-200 text-black rounded-lg;
+                }
+            }
+        }
+    }
+
+    .other-methods {
+        @apply flex flex-col;
+
+        & .info {
+            @apply flex flex-col items-center py-4;
+
+            & h4 {
+                @apply text-xl;
+            }
+
+            & h4, h5 {
+                @apply font-semibold m-3;
+            }
+
+            & p {
+                @apply m-1;
+            }
+        }
+    }
+}

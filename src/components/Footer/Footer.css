@@ -43,7 +43,7 @@
                     @apply pt-4 pl-2;
 
                     & li {
-                        @apply cursor-pointer;
+                        @apply cursor-pointer hover:underline w-fit;
                     }
                 }
             }

@@ -11,7 +11,8 @@ import 'lightgallery/css/lg-thumbnail.css';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 
-const imageImports = import.meta.glob('../../assets/img/**/*.{jpg,jpeg,png,gif,webp}', { eager: true });
+type ImageModule = { default: string };
+const imageImports: Record<string, ImageModule> = import.meta.glob('../../assets/img/**/*.{jpg,jpeg,png,gif,webp}', { eager: true });
 const imageList = Object.values(imageImports)
 
 const GalleryComp = () => {

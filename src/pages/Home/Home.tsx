@@ -1,7 +1,18 @@
 //import React from 'react';
 import './Home.css'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+    const navigate = useNavigate();
+    const goTo = () => {
+        navigate('/book-now');
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+
     return (
         <div className="content-container">
             <h1 className="title">Welcome to Skydive Brooklyn!</h1>
@@ -13,7 +24,7 @@ const Home = () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"></iframe>
                 <div className="no-click">
-                    <div className="button">Book The Experience!</div>
+                    <div className="button" onClick={() => goTo()}>Book The Experience!</div>
                 </div>
             </div>
             <div className="content">

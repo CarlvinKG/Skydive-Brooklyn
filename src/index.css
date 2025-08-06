@@ -1,21 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 @import "tailwindcss";
 @import "./theme.css";
-
-/* @theme {
-    --color-electric-blue: #85F9FF;
-    --color-neon-blue: #666AFD;
-    --color-palatinate-blue: #264AE6;
-    --color-pakistan-green: #223B05;
-    --color-sun: #F8F272;
-    --shadow-sun: 0 4px 6px -1px rgb(248 242 114 / 0.3), 0 2px 4px -2px rgb(248 242 114 / 0.3);
-
-    --breakpoint-sm: 500px;
-    --breakpoint-md: 800px;
-    --breakpoint-lg: 1100px;
-    --breakpoint-xl: 1400px;
-} */
 
 @layer base {
     * {
@@ -29,13 +16,16 @@
     }
 
     body {
-        @apply text-palatinate-blue bg-electric-blue bg-cloud-pattern;
+        @apply text-palatinate-blue bg-electric-blue bg-cloud-pattern bg-fixed min-h-[100vh];
         font-family: "poppins", serif;
         font-optical-sizing: auto;
     }
 
     h1 {
         @apply !text-[min(5.5vw,30px)] !font-bold text-center pb-2;
+        font-family: "Permanent Marker", cursive;
+        font-weight: 400;
+        font-style: normal;
         animation: appear 1s linear;
     }
 
@@ -91,7 +81,23 @@
                     }
                 }
             }
+
+            & .contact {
+                @apply md:grid grid-cols-[2fr_1fr] gap-4;
+            }
         }
+    }
+
+    button {
+        @apply cursor-pointer text-white p-3 bg-neon-blue hover:bg-blue-800 rounded-sm focus:ring-3 focus:ring-blue-300 disabled:bg-gray-300 disabled:cursor-default;
+    }
+
+    .error {
+        @apply text-red-600 underline;
+    }
+
+    .error-border {
+        @apply !border-2 !border-red-600;
     }
 }
 

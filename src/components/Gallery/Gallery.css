@@ -6,7 +6,7 @@
         @apply columns-2 gap-1.5 md:columns-3 md:gap-2.5 lg:columns-4;
 
         & img {
-            @apply w-full block p-[5px_0px] rounded-[20px] hover:opacity-90 hover:scale-101 transition ease-in-out duration-200;
+            @apply w-full block mb-[10px] shadow-md rounded-[20px] hover:opacity-90 hover:scale-101 transition ease-in-out duration-200;
         }
     }
 }

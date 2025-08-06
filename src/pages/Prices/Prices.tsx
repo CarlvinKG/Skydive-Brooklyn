@@ -3,16 +3,16 @@ import { PriceContext } from '../../components/Context/PriceContext'
 import './Prices.css'
 
 const Prices = () => {
-    const {
-        tandemPrice,
-        tandemPrices,
-        experiencedPrices
-    } =  useContext(PriceContext)
+    const context = useContext(PriceContext);
+    if (!context) {
+        return <p>Error: Price context is missing. Ensure you're wrapped in PriceProvider.</p>;
+    }
+    const { tandemPrice, tandemPrices, experiencedPrices } = context;
 
     return (
         <div className="content-container">
             <div className="content">
-                <h1>SDB Pricing</h1>
+                <h1>Prices</h1>
                 <h3>Same low prices all year around!</h3>
                 <div className="sbs">
                     <div className="article">
@@ -59,8 +59,8 @@ const Prices = () => {
                     <div className="article">
                         <h2>Experienced Skydive Prices</h2>
                         <div className="experienced-prices">
-                            {experiencedPrices.map((price) => (
-                                <p>
+                            {experiencedPrices.map((price, index) => (
+                                <p key={index}>
                                     <span className="icon">{price.icon}</span>
                                     <span className="label">{price.label}:</span>
                                     ${price.price.toFixed(2)}</p>
