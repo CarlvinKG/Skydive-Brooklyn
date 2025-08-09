@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import { PiPhoneCallThin, PiChatCircleDotsThin } from 'react-icons/pi'
 
 const OtherMethods = () => {
     const chatStart = "10:00:00";
-    const chatEnd = "17:00:00";
+    const chatEnd = "20:37:00";
 
     const [chatOpen, setChatOpen] = useState(false);
 
@@ -25,7 +25,7 @@ const OtherMethods = () => {
     useEffect(() => {
         chatTime();
 
-        const interval = setInterval(chatTime, 60 * 1000); // check every minute
+        const interval = setInterval(chatTime, 30 * 1000); // check every 30 sec
 
         return () => clearInterval(interval);
     }, []);

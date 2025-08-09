@@ -1,6 +1,5 @@
-//import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import { PriceProvider } from './components/Context/PriceContext'
+import { PriceProvider } from './components/Context/PriceProvider'
 import Layout from './layout/Layout'
 import Home from './pages/Home/Home'
 import AboutUs from './pages/AboutUs/AboutUs'

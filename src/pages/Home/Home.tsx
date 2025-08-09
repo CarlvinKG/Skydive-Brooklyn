@@ -57,7 +57,7 @@ const Home = () => {
                 <h2>Skydiving Safely with Skydive Brooklyn</h2>
                 <div className="sbs">
                     <div className="article">
-                        <h3>Skydive Brooklyn has five of the safest and most versatile planes in the business!</h3>
+                        <h3>Skydive Brooklyn has ten of the safest and most versatile planes in the business!</h3>
                         <p>Skydive Brooklyn is extremely proud of its impeccable and untarnished safety record.  This has made us a trusted and preferred option for beginners and experienced skydivers alike.  Our ability to maintain such an impression track record is directly correlated to the use of up-to-date safety equipment, our highly trained certified professional staff and progressive training methods.  We are a proud member of the USPA (United States Parachute Association), which sets the highest standards for safety.  Your safety is our primary concern!</p>
                     </div>
                     <div className="img-wrapper">
