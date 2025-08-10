@@ -36,15 +36,14 @@ const AboutUs = () => {
                     <div className="article">
                         <h3>Hours of Operation</h3>
                         <ul>
-                            <li>Monday - Friday: 10:00 am - 6:00 pm</li>
-                            <li>Saturday - Sunday: 7:30 am - 6:00 pm</li>
+                            <li>Monday - Friday: 9:00 am - 6:00 pm</li>
+                            <li>Saturday - Sunday: 8:00 am - 6:00 pm</li>
                         </ul>
                     </div>
                     <div className="article">
                         <h3>Reservation Times</h3>
                         <ul>
-                            <li>Monday - Friday: 10:30 am - 5:00 pm</li>
-                            <li>Saturday - Sunday: 8:00 am - 5:00 pm</li>
+                            <li>Monday - Sunday: 10:00 am - 5:00 pm</li>
                         </ul>
                         <p>Walk-ins are welcome but reservations take top priority.</p>
                     </div>

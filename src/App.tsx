@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import { PriceProvider } from './components/Context/PriceProvider'
+import { PriceProvider } from './components/Context/Price/PriceProvider'
+import { BookingProvider } from './components/Context/Booking/BookingProvider'
 import Layout from './layout/Layout'
 import Home from './pages/Home/Home'
 import AboutUs from './pages/AboutUs/AboutUs'
@@ -14,15 +15,17 @@ function App() {
     <BrowserRouter>
       <Layout>
         <PriceProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/prices" element={<Prices />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/book-now" element={<BookNow />} />
-          </Routes>
+          <BookingProvider>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/prices" element={<Prices />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/book-now" element={<BookNow />} />
+            </Routes>
+          </BookingProvider>
         </PriceProvider>
       </Layout>
     </BrowserRouter>

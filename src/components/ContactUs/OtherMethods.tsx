@@ -3,7 +3,7 @@ import { PiPhoneCallThin, PiChatCircleDotsThin } from 'react-icons/pi'
 
 const OtherMethods = () => {
     const chatStart = "10:00:00";
-    const chatEnd = "20:37:00";
+    const chatEnd = "17:00:00";
 
     const [chatOpen, setChatOpen] = useState(false);
 
@@ -39,9 +39,9 @@ const OtherMethods = () => {
                     <h5>(718) 995-8200</h5>
                     <p><b>Phone Hours</b></p>
                     <p><b>Monday - Friday:</b></p>
-                    <p>10:00 am - 5:00 pm</p>
+                    <p>9:30 am - 5:00 pm</p>
                     <p><b>Saturday - Sunday:</b></p>
-                    <p>7:30 am - 5:00 pm</p>
+                    <p>8:30 am - 5:00 pm</p>
                 </div>
             </div>
             <div className="article">

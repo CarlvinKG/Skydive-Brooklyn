@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PriceContext } from '../../components/Context/PriceContext'
+import { PriceContext } from '../../components/Context/Price/PriceContext'
 import './Prices.css'
 
 const Prices = () => {
@@ -7,6 +7,7 @@ const Prices = () => {
     if (!context) {
         return <p>Error: Price context is missing. Ensure you're wrapped in PriceProvider.</p>;
     }
+
     const { tandemPrice, tandemPrices, experiencedPrices } = context;
 
     return (

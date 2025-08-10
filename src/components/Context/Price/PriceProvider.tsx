@@ -1,7 +1,7 @@
 import React, { useState, type ReactNode } from 'react'
 import { GiAirplaneDeparture, GiClothes } from 'react-icons/gi'
 import { BsBackpack3 } from 'react-icons/bs'
-import { PriceContext } from './PriceContext'
+import { PriceContext } from './PriceContext.tsx'
 
 type LayoutProps = {
     children: ReactNode;
