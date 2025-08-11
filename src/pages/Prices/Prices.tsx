@@ -8,7 +8,7 @@ const Prices = () => {
         return <p>Error: Price context is missing. Ensure you're wrapped in PriceProvider.</p>;
     }
 
-    const { tandemPrice, tandemPrices, experiencedPrices } = context;
+    const { tandemPrice, tandemTable, experiencedTable } = context;
 
     return (
         <div className="content-container">
@@ -28,7 +28,7 @@ const Prices = () => {
                             <div className="table-header">
                                 Walk In
                             </div>
-                            {tandemPrices.map((price, index) => (
+                            {tandemTable.map((price, index) => (
                                 <React.Fragment key={index}>
                                     <div className="cell">
                                         <p>{price.label}</p>
@@ -60,7 +60,7 @@ const Prices = () => {
                     <div className="article">
                         <h2>Experienced Skydive Prices</h2>
                         <div className="experienced-prices">
-                            {experiencedPrices.map((price, index) => (
+                            {experiencedTable.map((price, index) => (
                                 <p key={index}>
                                     <span className="icon">{price.icon}</span>
                                     <span className="label">{price.label}:</span>

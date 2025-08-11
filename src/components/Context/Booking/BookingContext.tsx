@@ -23,6 +23,10 @@ type BookingContextType = {
         confirmation: boolean
     };
     toggleSections: (section: SectionKey, prevSection?: SectionKey) => void;
+    selectedDate: Date | undefined;
+    setSelectedDate: (date: Date | undefined) => void;
+    selectedTime: string | undefined;
+    setSelectedTime: (time: string) => void;
 };
 
 export const BookingContext = createContext<BookingContextType | null>(null)

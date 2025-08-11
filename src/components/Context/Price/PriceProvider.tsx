@@ -7,13 +7,13 @@ type LayoutProps = {
     children: ReactNode;
 };
 
-type TandemPrice = {
+type TandemTable = {
     label: string;
     online: number;
     walkIn: number;
 };
 
-type ExperiencedPrice = {
+type ExperiencedTable = {
     icon: React.JSX.Element;
     label: string;
     price: number;
@@ -21,7 +21,8 @@ type ExperiencedPrice = {
 
 export const PriceProvider = ({ children }: LayoutProps) => {
     const tandemPrice: number = 265;
-    const [groupSize, setGroupSize] = useState<number>(0);
+    const experiencedPrice: number = 45;
+    const [groupSize, setGroupSize] = useState<number>(1);
     const groupMax: number = 15;
 
     const getDiscountRate = () => {
@@ -30,11 +31,13 @@ export const PriceProvider = ({ children }: LayoutProps) => {
         return 0.85;
     };
 
+    const deposit: number = 65;
     const discountRate = getDiscountRate();
-    const tandemDiscounted = Math.round(tandemPrice * discountRate * 100) / 100;
-    const tandemTotal = Math.round(tandemDiscounted * groupSize * 100) / 100;
+    const tandemDiscounted: number = Math.round(tandemPrice * discountRate * 100) / 100;
+    const tandemTotal: number = Math.round(tandemDiscounted * groupSize * 100) / 100;
+    const experiencedTotal: number = Math.round(experiencedPrice * groupSize * 100) / 100;
 
-    const tandemPrices: TandemPrice[] = [
+    const tandemTable: TandemTable[] = [
         {
             label: '1 - 4',
             online: tandemDiscounted,
@@ -50,12 +53,8 @@ export const PriceProvider = ({ children }: LayoutProps) => {
         }
     ]
 
-    const experiencedPrices: ExperiencedPrice[] = [
+    const experiencedTable: ExperiencedTable[] = [
         {
-            icon: <GiAirplaneDeparture size={20} />,
-            label: "13,500' Lift ticket",
-            price: 30,
-        }, {
             icon: <GiAirplaneDeparture size={20} />,
             label: "14,500' Lift ticket",
             price: 45,
@@ -70,16 +69,26 @@ export const PriceProvider = ({ children }: LayoutProps) => {
         }
     ]
 
+    const handleGroupSize =(e: number) => {
+        if (e !== groupSize) {
+            setGroupSize(e)
+        }
+    }
+
     return (
         <PriceContext.Provider value={{
             tandemPrice,
             tandemDiscounted,
+            deposit,
             groupMax,
             groupSize,
             setGroupSize,
             tandemTotal,
-            tandemPrices,
-            experiencedPrices
+            tandemTable,
+            experiencedTable,
+            experiencedPrice,
+            experiencedTotal,
+            handleGroupSize
         }}>
             { children }
         </PriceContext.Provider>
