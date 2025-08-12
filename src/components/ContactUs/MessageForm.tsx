@@ -10,8 +10,8 @@ const MessageForm = () => {
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [messageError, setMessageError] = useState('');
-    const specialChar: string = "Special characters are not allowed."
-    const check = <IoMdCheckmarkCircleOutline size={18} />
+    const specialChar: string = "Special characters are not allowed.";
+    const check = <IoMdCheckmarkCircleOutline size={18} />;
 
     const isNameValid = () => name !== '' && nameError === '';
     const isEmailValid = () => email !== '' && emailError === '';
@@ -28,7 +28,7 @@ const MessageForm = () => {
         const value = e.target.value;
         const regex = /^[a-zA-Z0-9 .,?!'"-]*$/;
 
-        if (value.trim() !== '') {
+        if (value.trim() !== '' && value.length > 2) {
             if (regex.test(value)) {
                 if (type === 'name') {
                     setName(value);
@@ -46,20 +46,20 @@ const MessageForm = () => {
             }
         } else {
             if (type === 'name') {
-                setNameError(`Please enter a valid ${type}.`)
+                setNameError(`Please enter a valid ${type}. Must be at least 3 characters.`);
             } else if (type === 'message') {
-                setMessageError(`Please enter a valid ${type}.`)
+                setMessageError(`Please enter a valid ${type}. Must be at least 3 characters.`)
             }
         }
     };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setEmail(value);
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (emailRegex.test(value)) {
             setEmailError('');
+            setEmail(value);
         } else {
             setEmailError('Please enter a valid email address.');
         }
@@ -93,7 +93,7 @@ const MessageForm = () => {
                             className={nameError ? 'error-border' : ''}
                             type='text'
                             id='name'
-                            onChange={ (e) => handleOnChange(e, "name") }
+                            onBlur={ (e) => handleOnChange(e, "name") }
                             required={ true }
                             aria-invalid={!!nameError} />
                         {nameError && <small className="error">{nameError}</small>}
@@ -116,7 +116,7 @@ const MessageForm = () => {
                             rows={ 6 }
                             maxLength={1000}
                             required={ true }
-                            onChange={ (e) => handleOnChange(e, "message") }
+                            onBlur={ (e) => handleOnChange(e, "message") }
                             aria-invalid={!!messageError}
                         ></textarea>
                         <div className="grid grid-cols-[60%_40%] items-center w-full">

@@ -28,11 +28,21 @@ export const BookingProvider = ({ children }: LayoutProps) => {
         payment: false,
         confirmation: false,
     });
+    const [firstName, setFirstName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [phoneConsent, setPhoneConsent] = useState<boolean>(false);
+    const [note, setNote] = useState<string>('');
 
     const handelChosen = (s: string) => {
         if (s !== chosen) {
             setChosen(s);
         }
+    }
+
+    const handlePhoneConsent = () => {
+        setPhoneConsent(!phoneConsent)
     }
 
     const toggleSections = (section: SectionKey, prevSection?: SectionKey) => {
@@ -60,6 +70,18 @@ export const BookingProvider = ({ children }: LayoutProps) => {
             setSelectedDate,
             selectedTime,
             setSelectedTime,
+            firstName,
+            setFirstName,
+            lastName,
+            setLastName,
+            email,
+            setEmail,
+            phone,
+            setPhone,
+            phoneConsent,
+            handlePhoneConsent,
+            note,
+            setNote
         }}>
             { children }
         </BookingContext.Provider>

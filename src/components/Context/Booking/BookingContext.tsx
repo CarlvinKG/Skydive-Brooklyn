@@ -27,6 +27,18 @@ type BookingContextType = {
     setSelectedDate: (date: Date | undefined) => void;
     selectedTime: string | undefined;
     setSelectedTime: (time: string) => void;
+    firstName: string;
+    setFirstName: (firstName: string) => void;
+    lastName: string;
+    setLastName: (lastName: string) => void;
+    email: string;
+    setEmail: (email: string) => void;
+    phone: string;
+    setPhone: (phone: string) => void;
+    phoneConsent: boolean;
+    handlePhoneConsent:  () => void;
+    note: string;
+    setNote: (note: string) => void;
 };
 
 export const BookingContext = createContext<BookingContextType | null>(null)
