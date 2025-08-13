@@ -148,6 +148,7 @@ const GuestInfo = () => {
                 <div className="field">
                     <label htmlFor="email">E-mail<sup>*</sup> <span>{email && !emailError && checkMark}</span></label>
                     <input
+                        className={emailError ? 'error-border' : ''}
                         type='email'
                         id='email'
                         onBlur={ (e) => handleEmailChange(e) }
@@ -172,7 +173,7 @@ const GuestInfo = () => {
                 </div>
                 <div className="phone-consent">
                     <div className="checkBox">
-                        <div className="icon" onClick={ () => handlePhoneConsent() }>
+                        <div className={`icon ${phoneConsent ? 'active' : ''}`} onClick={ () => handlePhoneConsent() }>
                             {phoneConsent ? <IoMdCheckboxOutline size={20} /> : <MdCheckBoxOutlineBlank size={20} />}
                         </div>
                     </div>

@@ -49,7 +49,7 @@ const DateTime = () => {
             </div>
             <div className="button-container">
                 <button className='back-btn'>Back</button>
-                <button disabled={!selectedDate || selectedTime === ''}>Next</button>
+                <button className='next-btn' disabled={!selectedDate || selectedTime === ''}>Next</button>
             </div>
         </div>
     );

@@ -38,12 +38,12 @@ const BookType = () => {
 
 
     return (
-        <>
+        <div className="booking-type">
             <div className="sessions">
                 {sessionType.map((session) =>  (
                     <div className="session-item" key={session}>
-                        <div className="icon" onClick={() => handelChosen(session)}>
-                                { chosen === session ? <IoMdRadioButtonOn /> : <IoMdRadioButtonOff /> }
+                        <div className={`icon ${chosen === session ? 'active' : ''}`} onClick={() => handelChosen(session)}>
+                                { chosen === session ? <IoMdRadioButtonOn size={20} /> : <IoMdRadioButtonOff size={20} /> }
                         </div>
                         <div className="session-name">
                             <p>{session}</p>
@@ -53,7 +53,8 @@ const BookType = () => {
             </div>
             <div className="group-size">
                 <label htmlFor="groupSize">Number of Guest</label>
-                <input
+                <div className="w-full mb-2">
+                    <input
                     disabled={!chosen}
                     defaultValue='1'
                     type="number"
@@ -62,7 +63,9 @@ const BookType = () => {
                     min='1'
                     max={groupMax}
                     onChange={(e) => handleGroupSize(e.target.valueAsNumber)}
-                />{chosen === "Tandem" ? ` x $${tandemDiscounted.toFixed(2)}/Per Person` : chosen === "Experienced" ? ` x $${experiencedPrice.toFixed(2)}/Per Person` : ''}
+                />
+                    {chosen === "Tandem" ? ` x $${tandemDiscounted.toFixed(2)}/Per Person` : chosen === "Experienced" ? ` x $${experiencedPrice.toFixed(2)}/Per Person` : ''}
+                </div>
             </div>
             <div className="pricing">
                 {renderPricing()}
@@ -70,7 +73,7 @@ const BookType = () => {
             <div className="button-container">
                 <button disabled={!chosen}>Next</button>
             </div>
-        </>
+        </div>
     );
 };
 
