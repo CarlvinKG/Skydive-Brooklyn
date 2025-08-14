@@ -1,28 +1,20 @@
 import { createContext } from 'react'
-
-type SectionKey =
-    | 'dateTime'
-    | 'groupSize'
-    | 'primaryInfo'
-    | 'secondaryInfo'
-    | 'agree'
-    | 'payment'
-    | 'confirmation';
+import type { SectionKey, AgreementsKey } from './Types'
 
 type BookingContextType = {
     sessionType: string[];
     chosen: string;
-    handelChosen: (s: string) => void;
+    handleChosen: (s: string) => void;
     sections: {
+        agree: boolean
+        confirmation: boolean
         dateTime: boolean
         groupSize: boolean
-        primaryInfo: boolean
-        secondaryInfo: boolean
-        agree: boolean
         payment: boolean
-        confirmation: boolean
+        primaryInfo: boolean
+        sessionType: boolean
     };
-    toggleSections: (section: SectionKey, prevSection?: SectionKey) => void;
+    toggleSections: (prevSection: SectionKey, nextSection: SectionKey) => void;
     selectedDate: Date | undefined;
     setSelectedDate: (date: Date | undefined) => void;
     selectedTime: string | undefined;
@@ -36,9 +28,19 @@ type BookingContextType = {
     phone: string;
     setPhone: (phone: string) => void;
     phoneConsent: boolean;
-    handlePhoneConsent:  () => void;
+    handlePhoneConsent: () => void;
     note: string;
     setNote: (note: string) => void;
+    agreements: {
+        age: boolean
+        arrival: boolean
+        duration: boolean
+        health: boolean
+        id: boolean
+        weather: boolean
+        weight: boolean
+    };
+    toggleAgreement: (agreement: AgreementsKey) => void;
 };
 
 export const BookingContext = createContext<BookingContextType | null>(null)

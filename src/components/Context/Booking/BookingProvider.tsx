@@ -1,18 +1,10 @@
-import { useState, useEffect, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { BookingContext } from './BookingContext'
+import type { SectionKey, AgreementsKey } from './Types'
 
 type LayoutProps = {
     children: ReactNode;
 };
-
-type SectionKey =
-    | 'dateTime'
-    | 'groupSize'
-    | 'primaryInfo'
-    | 'secondaryInfo'
-    | 'agree'
-    | 'payment'
-    | 'confirmation';
 
 export const BookingProvider = ({ children }: LayoutProps) => {
     const sessionType: string[] = ['Tandem', 'Experienced'];
@@ -20,10 +12,10 @@ export const BookingProvider = ({ children }: LayoutProps) => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
     const [selectedTime, setSelectedTime] = useState('');
     const [sections, setSections] = useState<Record<SectionKey, boolean>>({
+        sessionType: true,
         dateTime: false,
         groupSize: false,
         primaryInfo: false,
-        secondaryInfo: false,
         agree: false,
         payment: false,
         confirmation: false,
@@ -34,8 +26,17 @@ export const BookingProvider = ({ children }: LayoutProps) => {
     const [phone, setPhone] = useState<string>('');
     const [phoneConsent, setPhoneConsent] = useState<boolean>(false);
     const [note, setNote] = useState<string>('');
+    const [agreements, setAgreements] = useState<Record<AgreementsKey, boolean>>({
+        age: false,
+        health: false,
+        weight: false,
+        id: false,
+        arrival: false,
+        duration: false,
+        weather: false,
+    });
 
-    const handelChosen = (s: string) => {
+    const handleChosen = (s: string) => {
         if (s !== chosen) {
             setChosen(s);
         }
@@ -45,25 +46,26 @@ export const BookingProvider = ({ children }: LayoutProps) => {
         setPhoneConsent(!phoneConsent)
     }
 
-    const toggleSections = (section: SectionKey, prevSection?: SectionKey) => {
+    const toggleSections = (prevSection: SectionKey, nextSection: SectionKey) => {
         setSections((prev) => ({
             ...prev,
-            [section]: !prev[section],
-            ...(prevSection ? { [prevSection]: !prev[prevSection] } : {}),
+            [prevSection]: !prev[prevSection],
+            ...(nextSection ? { [nextSection]: !prev[nextSection] } : {}),
         }));
     };
 
-    useEffect(() => {
-        if (chosen) {
-            toggleSections("dateTime");
-        }
-    }, [chosen]);
+    const toggleAgreement = (agreement: AgreementsKey) => {
+        setAgreements((prev) => ({
+            ...prev,
+            [agreement]: !prev[agreement]
+        }));
+    };
 
     return (
         <BookingContext.Provider value={{
             sessionType,
             chosen,
-            handelChosen,
+            handleChosen,
             sections,
             toggleSections,
             selectedDate,
@@ -81,7 +83,9 @@ export const BookingProvider = ({ children }: LayoutProps) => {
             phoneConsent,
             handlePhoneConsent,
             note,
-            setNote
+            setNote,
+            agreements,
+            toggleAgreement
         }}>
             { children }
         </BookingContext.Provider>

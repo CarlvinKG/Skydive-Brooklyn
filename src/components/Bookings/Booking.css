@@ -2,99 +2,106 @@
 @import "../../theme.css";
 
 @layer components {
-    .booking-type, .agreements-container, .datetime, .guest-info, .note {
-        @apply my-6 border-1 p-3 rounded-md border-gray-400;
-    }
+    .booking-form {
 
-    .note {
-        @apply w-full bg-gray-200 border-1 border-gray-400;
-    }
+        .booking-type, .agreements-container, .datetime, .guest-info, .note {
+            @apply my-6 border-1 p-3 rounded-md border-gray-400;
+        }
 
-    .sessions {
-        @apply flex justify-center gap-6 mb-3;
+        .note {
+            @apply w-full bg-gray-200 border-1 border-gray-400;
+        }
+
+        .sessions {
+            @apply flex justify-center gap-6 mb-3;
+
+            & .icon {
+                @apply flex justify-center items-center text-gray-500;
+            }
+
+            & .icon.active {
+                @apply text-pakistan-green;
+            }
+
+            & .session-name{
+                @apply flex justify-center items-center;
+            }
+        }
+
+        .group-size {
+            @apply flex flex-col text-pakistan-green;
+
+            & input {
+                @apply w-[55%] border-1 border-gray-300 p-2 rounded-md disabled:bg-gray-200;
+            }
+        }
+
+        .button-container {
+            @apply flex justify-center items-center mt-10 mb-4;
+
+            & .back-btn, .next-btn {
+                @apply mx-10;
+            }
+        }
+
+        .datetime {
+            @apply flex flex-col justify-center items-center;
+
+            & .date {
+                @apply text-pakistan-green;
+            }
+
+            & .time {
+                @apply text-pakistan-green mt-6;
+
+                & select {
+                    @apply min-w-[250px];
+                }
+            }
+        }
+
+        & input, select {
+            @apply text-black w-full md:w-[60%] border-1 border-gray-300 p-2 rounded-md disabled:bg-gray-200;
+        }
+
+        .info-fields {
+            @apply text-pakistan-green;
+
+            & .field {
+                @apply flex flex-col mb-3;
+
+                & label {
+                    @apply flex items-center;
+                }
+
+                & sup {
+                    @apply text-red-600 mr-2;
+                }
+            }
+        }
+
+        .phone-consent {
+            @apply flex flex-row;
+
+            & .checkBox {
+                @apply flex mr-2;
+            }
+        }
+
+        .agreement {
+            @apply flex text-pakistan-green mb-2;
+
+            & .description {
+                @apply ml-2;
+            }
+        }
 
         & .icon {
-            @apply flex justify-center items-center text-gray-500;
+            @apply text-gray-500;
         }
 
         & .icon.active {
             @apply text-pakistan-green;
         }
-
-        & .session-name{
-            @apply flex justify-center items-center;
-        }
-    }
-
-    .group-size {
-        @apply flex flex-col text-pakistan-green;
-
-        & input {
-            @apply w-[50%] border-1 border-gray-300 p-2 rounded-md disabled:bg-gray-200;
-        }
-    }
-
-    .button-container {
-        @apply flex justify-center items-center mt-10 mb-4;
-
-        & .back-btn, .next-btn {
-            @apply mx-10;
-        }
-    }
-
-    .datetime {
-        @apply flex flex-col justify-center items-center;
-
-        & .date {
-            @apply text-pakistan-green;
-        }
-
-        & .time {
-            @apply text-pakistan-green mt-6;
-        }
-    }
-
-    & input, select {
-        @apply text-black w-[50%] min-w-[308px] border-1 border-gray-300 p-2 rounded-md disabled:bg-gray-200;
-    }
-
-    .info-fields {
-        @apply text-pakistan-green;
-
-        & .field {
-            @apply flex flex-col mb-3;
-
-            & label {
-                @apply flex items-center;
-            }
-
-            & sup {
-                @apply text-red-600 mr-2;
-            }
-        }
-    }
-
-    .phone-consent {
-        @apply flex flex-row;
-
-        & .checkBox {
-            @apply flex mr-2;
-        }
-    }
-
-    .agreement {
-        @apply flex text-pakistan-green mb-2;
-
-        & .description {
-            @apply ml-2;
-        }
-    }
-
-    & .icon {
-        @apply text-gray-500;
-    }
-
-    & .icon.active {
-        @apply text-pakistan-green;
     }
 }

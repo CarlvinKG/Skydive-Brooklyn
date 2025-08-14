@@ -9,7 +9,7 @@ const DateTime = () => {
         return <p>Error: Booking context is missing. Ensure you're wrapped in BookingProvider.</p>;
     }
 
-    const { selectedDate, setSelectedDate, selectedTime, setSelectedTime } = context;
+    const { selectedDate, setSelectedDate, selectedTime, setSelectedTime, toggleSections } = context;
 
     const today = new Date();
     const dayAfterTomorrow = new Date(today);
@@ -40,7 +40,7 @@ const DateTime = () => {
                 />
             </div>
             <div className="time">
-                <select value={selectedTime}  onChange={(e) => setSelectedTime(e.target.value)}>
+                <select value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} disabled={!selectedDate}>
                     <option value="" disabled hidden>Please select a time</option>
                     {availableTimes.map((time) => (
                         <option key={time} value={time}>{time}</option>
@@ -48,8 +48,8 @@ const DateTime = () => {
                 </select>
             </div>
             <div className="button-container">
-                <button className='back-btn'>Back</button>
-                <button className='next-btn' disabled={!selectedDate || selectedTime === ''}>Next</button>
+                <button className='back-btn' onClick={() => toggleSections('sessionType','dateTime')}>Back</button>
+                <button className='next-btn' disabled={!selectedDate || selectedTime === ''} onClick={() => toggleSections('dateTime', 'primaryInfo')}>Next</button>
             </div>
         </div>
     );

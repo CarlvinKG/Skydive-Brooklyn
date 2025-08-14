@@ -15,8 +15,8 @@ const BookType = () => {
         return <p>Error: Price context is missing. Ensure you're wrapped in PriceProvider.</p>;
     }
 
-    const { sessionType, chosen, handelChosen  } = bookingContext;
-    const { groupMax, handleGroupSize, tandemTotal, tandemDiscounted, deposit, experiencedTotal, experiencedPrice } = priceContext;
+    const { sessionType, chosen, handleChosen, toggleSections } = bookingContext;
+    const { groupMax, handleGroupSize, tandemTotal, tandemDiscounted, deposit, experiencedTotal, experiencedPrice, groupSize } = priceContext;
 
     const renderPricing = () => {
         if (chosen === "Tandem") {
@@ -42,7 +42,7 @@ const BookType = () => {
             <div className="sessions">
                 {sessionType.map((session) =>  (
                     <div className="session-item" key={session}>
-                        <div className={`icon ${chosen === session ? 'active' : ''}`} onClick={() => handelChosen(session)}>
+                        <div className={`icon ${chosen === session ? 'active' : ''}`} onClick={() => handleChosen(session)}>
                                 { chosen === session ? <IoMdRadioButtonOn size={20} /> : <IoMdRadioButtonOff size={20} /> }
                         </div>
                         <div className="session-name">
@@ -56,7 +56,7 @@ const BookType = () => {
                 <div className="w-full mb-2">
                     <input
                     disabled={!chosen}
-                    defaultValue='1'
+                    value={groupSize}
                     type="number"
                     id='group-size'
                     name='group-size'
@@ -71,7 +71,7 @@ const BookType = () => {
                 {renderPricing()}
             </div>
             <div className="button-container">
-                <button disabled={!chosen}>Next</button>
+                <button onClick={() => toggleSections('sessionType','dateTime')} disabled={!chosen}>Next</button>
             </div>
         </div>
     );

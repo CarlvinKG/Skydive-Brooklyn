@@ -70,9 +70,7 @@ export const PriceProvider = ({ children }: LayoutProps) => {
     ]
 
     const handleGroupSize =(e: number) => {
-        if (e !== groupSize) {
-            setGroupSize(e)
-        }
+        setGroupSize(e)
     }
 
     return (

@@ -1,15 +1,8 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { IoMdCheckboxOutline } from 'react-icons/io'
 import { MdCheckBoxOutlineBlank } from 'react-icons/md'
-
-type AgreementsKey =
-    | 'age'
-    | 'health'
-    | 'weight'
-    | 'id'
-    | 'arrival'
-    | 'duration'
-    | 'weather';
+import { BookingContext } from '../Context/Booking/BookingContext'
+import type {AgreementsKey} from "../Context/Booking/Types.tsx";
 
 type AgreementsArrayKey = {
     label: string;
@@ -17,15 +10,13 @@ type AgreementsArrayKey = {
 };
 
 const Agreement = () => {
-    const [agreements, setAgreements] = useState<Record<AgreementsKey, boolean>>({
-        age: false,
-        health: false,
-        weight: false,
-        id: false,
-        arrival: false,
-        duration: false,
-        weather: false,
-    });
+
+    const context = useContext(BookingContext);
+    if (!context) {
+        return <p>Error: Booking context is missing. Ensure you're wrapped in BookingProvider.</p>;
+    }
+
+    const { toggleSections, agreements, toggleAgreement } = context;
 
     const agreementsArray: AgreementsArrayKey[] = [
         {
@@ -52,13 +43,6 @@ const Agreement = () => {
         }
     ];
 
-    const toggleAgreement = (agreement: AgreementsKey) => {
-        setAgreements((prev) => ({
-            ...prev,
-            [agreement]: !prev[agreement]
-        }));
-    };
-
     const allGreen = () => agreements.age && agreements.health && agreements.weight && agreements.id && agreements.arrival && agreements.duration && agreements.weather;
 
     return (
@@ -66,7 +50,7 @@ const Agreement = () => {
             <div className="agreements">
                 {agreementsArray.map(agreement => (
                     <div key={agreement.label} className='agreement'>
-                        <div className={`icon ${agreements[agreement.label as AgreementsKey] ? 'active' : ''}`} onClick={() => toggleAgreement(agreement.label)}>
+                        <div className={`icon ${agreements[agreement.label as AgreementsKey] ? 'active' : ''}`} onClick={() => toggleAgreement(agreement.label as AgreementsKey)}>
                             {agreements[agreement.label as AgreementsKey] ? <IoMdCheckboxOutline size={20} /> : <MdCheckBoxOutlineBlank size={20} />}
                         </div>
                         <div className="description">{ agreement.description }</div>
@@ -75,7 +59,7 @@ const Agreement = () => {
             </div>
 
             <div className="button-container">
-                <button className='back-btn'>Back</button>
+                <button className='back-btn' onClick={() => toggleSections('primaryInfo', 'agree')}>Back</button>
                 <button className='next-btn' disabled={!allGreen()}>Next</button>
             </div>
         </div>
