@@ -9,7 +9,7 @@ const DateTime = () => {
         return <p>Error: Booking context is missing. Ensure you're wrapped in BookingProvider.</p>;
     }
 
-    const { selectedDate, setSelectedDate, selectedTime, setSelectedTime, toggleSections } = context;
+    const { sections, selectedDate, setSelectedDate, selectedTime, setSelectedTime, toggleSections } = context;
 
     const today = new Date();
     const dayAfterTomorrow = new Date(today);
@@ -29,7 +29,7 @@ const DateTime = () => {
     }
 
     return (
-        <div className='datetime'>
+        <div className={`datetime ${sections.dateTime ? 'opened' : ''}`}>
             <div className='date'>
                 <DayPicker
                     mode="single"

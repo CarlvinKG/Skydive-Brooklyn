@@ -15,7 +15,7 @@ const BookType = () => {
         return <p>Error: Price context is missing. Ensure you're wrapped in PriceProvider.</p>;
     }
 
-    const { sessionType, chosen, handleChosen, toggleSections } = bookingContext;
+    const { sections, sessionType, chosen, handleChosen, toggleSections } = bookingContext;
     const { groupMax, handleGroupSize, tandemTotal, tandemDiscounted, deposit, experiencedTotal, experiencedPrice, groupSize } = priceContext;
 
     const renderPricing = () => {
@@ -38,7 +38,7 @@ const BookType = () => {
 
 
     return (
-        <div className="booking-type">
+        <div className={`booking-type ${sections.sessionType ? 'opened' : ''}`}>
             <div className="sessions">
                 {sessionType.map((session) =>  (
                     <div className="session-item" key={session}>

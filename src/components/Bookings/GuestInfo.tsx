@@ -4,18 +4,19 @@ import { IoMdCheckmarkCircleOutline, IoMdCheckboxOutline } from 'react-icons/io'
 import { MdCheckBoxOutlineBlank } from 'react-icons/md'
 
 const GuestInfo = () => {
-    const [firstNameError, setFirstNameError] = useState('');
-    const [lastNameError, setLastNameError] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [phoneError, setPhoneError] = useState('');
-    const specialChar: string = "Special characters are not allowed.";
-    const checkMark = <IoMdCheckmarkCircleOutline size={18} />;
+    const [firstNameError, setFirstNameError] = useState<string>('');
+    const [lastNameError, setLastNameError] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>('');
+    const [phoneError, setPhoneError] = useState<string>('');
     const phoneRef = useRef<HTMLInputElement>(null);
 
     const [isFirstNameValid, setFirstNameValid] = useState<boolean>(false);
     const [isLastNameValid, setLastNameValid] = useState<boolean>(false);
     const [isEmailValid, setEmailValid] = useState<boolean>(false);
     const [isPhoneValid, setPhoneValid] = useState<boolean>(false);
+
+    const specialChar: string = "Special characters are not allowed.";
+    const checkMark: React.JSX.Element = <IoMdCheckmarkCircleOutline size={18} />;
 
     const context = useContext(BookingContext);
     if (!context) {
@@ -33,7 +34,9 @@ const GuestInfo = () => {
         setPhone,
         phoneConsent,
         handlePhoneConsent,
-        toggleSections
+        toggleSections,
+        selectedDate,
+        selectedTime
     } = context;
 
     const allGreen = () => isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid;
@@ -140,6 +143,17 @@ const GuestInfo = () => {
 
     return (
         <div className="guest-info">
+            <div className="when">
+                <h4>
+                    {selectedDate ? selectedDate.toLocaleString(undefined, {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    }) : ''} @ {selectedTime}<br />
+                    Add Primary Guest Information
+                </h4>
+            </div>
             <div className="info-fields">
                 <div className="field">
                     <label htmlFor="first-name">First Name<sup>*</sup> <span>{isFirstNameValid && !firstNameError ? checkMark : ''}</span></label>

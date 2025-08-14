@@ -4,12 +4,12 @@
 @layer components {
     .booking-form {
 
-        .booking-type, .agreements-container, .datetime, .guest-info, .note {
+        .booking-type, .agreements-container, .datetime, .guest-info {
             @apply my-6 border-1 p-3 rounded-md border-gray-400;
         }
 
         .note {
-            @apply w-full bg-gray-200 border-1 border-gray-400;
+            @apply w-full my-6 p-3 bg-gray-200 border-1 rounded-md border-gray-400;
         }
 
         .sessions {
@@ -62,6 +62,14 @@
 
         & input, select {
             @apply text-black w-full md:w-[60%] border-1 border-gray-300 p-2 rounded-md disabled:bg-gray-200;
+        }
+
+        .when {
+            @apply mb-8;
+
+            & h4 {
+                @apply font-semibold text-center;
+            }
         }
 
         .info-fields {
